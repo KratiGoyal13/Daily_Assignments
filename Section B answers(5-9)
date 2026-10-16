@@ -1,0 +1,10 @@
+Ans5:
+Cloud infrastructure uses computing resources provided over the internet by a cloud provider. On-premises infrastructure uses servers and equipment installed and maintained at the company's own premises.
+Ans6:
+An Azure subscription is a logical container used to provision and manage Azure resources, associate billing, and apply access controls.
+Ans7:
+An Azure Resource Group is a logical container that holds related Azure resources so they can be managed together.
+Ans8:
+Subscription--> Resource Group--> Resouce
+Ans9:
+To managed related resources together, apply access controls, monitor costs, and deploy or delete resources as a group when appropriate.
