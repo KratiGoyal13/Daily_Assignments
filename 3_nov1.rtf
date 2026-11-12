@@ -1,0 +1,207 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Aptos;}{\f1\fswiss\fprq2\fcharset0 Segoe UI;}{\f2\fnil\fcharset0 Calibri;}{\f3\fnil\fcharset2 Symbol;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\widctlpar\sa160\sl276\slmult1\qc\kerning2\ul\b\f0\fs40\lang16393 LangChain: Connecting RAG Components\par
+\fs24\par
+
+\pard\widctlpar\sa160\sl276\slmult1\ulnone\b0 LangChain is an open-source framework that helps developers build applications powered by Large Language Models (LLMs) such as GPT, Gemini, Claude, and Llama.\par
+Its main purpose is to connect different AI components together so that an LLM can work with external data, tools, APIs, and databases.\par
+\par
+A standalone LLM only knows what it learned during training. LangChain helps the LLM:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1 Read documents (PDFs, Word files, websites)\par
+{\pntext\f3\'B7\tab}Store and search knowledge using vector databases\par
+{\pntext\f3\'B7\tab}Retrieve relevant information (RAG)\par
+{\pntext\f3\'B7\tab}Use external APIs and tools\par
+{\pntext\f3\'B7\tab}Maintain conversation memory\par
+{\pntext\f3\'B7\tab}Build AI agents that can perform tasks\par
+
+\pard\widctlpar\li720\sa160\sl276\slmult1\par
+\fs40  Pipeline:\par
+\fs24\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\b Document Loading\b0\par
+Load data from PDFs, Word files, websites, databases, etc.\par
+Example: PyPDFLoader, TextLoader, WebBaseLoader.\par
+\b Document Splitting\b0\par
+Break large documents into smaller chunks.\par
+Improves retrieval accuracy and reduces token usage.\par
+Example: RecursiveCharacterTextSplitter.\par
+\b Embedding\b0\par
+Convert text chunks into numerical vectors.\par
+Similar meanings produce similar vectors.\par
+Example models: \par
+
+\pard\widctlpar\li1080\sa160\sl276\slmult1 OpenAI Embeddings\par
+Hugging Face Embeddings\par
+Sentence Transformers\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\b Vector Store\b0\par
+Store embeddings in a vector database.\par
+Examples: \par
+
+\pard\widctlpar\li1080\sa160\sl276\slmult1 FAISS\par
+ChromaDB\par
+Pinecone\par
+Weaviate\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\b Retrieval\b0\par
+User asks a question.\par
+Similar chunks are retrieved using vector similarity search.\par
+Example: top-k relevant chunks.\par
+\b Generation\b0\par
+Retrieved context + user query are sent to an LLM.\par
+LLM generates an accurate, context-aware response.\par
+\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qc\ul\b\fs40 LlamaIndex\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj\ulnone\b0\fs24 LlamaIndex is an open-source framework designed specifically for connecting LLMs with your private data and building RAG (Retrieval-Augmented Generation) applications.\par
+While LangChain connects different components of an AI application, LlamaIndex focuses on organizing, indexing, and retrieving data efficiently.\par
+\b Main Purpose\par
+\b0 LlamaIndex helps:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj Load data from documents\par
+{\pntext\f3\'B7\tab}Convert documents into searchable nodes\par
+{\pntext\f3\'B7\tab}Create vector indexes\par
+{\pntext\f3\'B7\tab}Retrieve the most relevant information\par
+{\pntext\f3\'B7\tab}Send retrieved context to an LLM\par
+
+\pard\widctlpar\li720\sa160\sl276\slmult1\qj\par
+
+\pard\widctlpar\li720\sl300\slmult0\kerning0\b\f1 LlamaIndex Workflow Explanation\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj\kerning2\f0 1. Document Loading\par
+\b0 The first step is to load data from different sources:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj PDF files\par
+{\pntext\f3\'B7\tab}Word documents\par
+{\pntext\f3\'B7\tab}Websites\par
+{\pntext\f3\'B7\tab}Databases\par
+{\pntext\f3\'B7\tab}APIs\par
+
+\pard\widctlpar\li360\sb100\sa100\sl300\slmult0\kerning0\b\f1 2. Node Creation\par
+
+\pard\widctlpar\li720\sb100\sa100\sl300\slmult0\b0\fs21 Large documents are split into smaller pieces called \b nodes\b0 .\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj\kerning2\b\f0\fs24 3. Embedding Generation\par
+\b0 Each node is converted into a numerical representation called an \b embedding\b0 .\par
+\b 4. Vector Index Creation\par
+\b0 All node embeddings are stored in a \b Vector Index\b0 .\par
+\b 5. Query/Search\par
+\b0 A user asks a question: "What are the benefits of AI in healthcare?"\par
+The query is also converted into an embedding\par
+\b 6. Retrieval\par
+\b0 LlamaIndex compares the query embedding with the stored node embeddings.\par
+It retrieves the most relevant nodes.\par
+This step is called \b semantic retrieval\b0 .\par
+\b 7. LLM Processing\par
+\b0 The retrieved nodes and user question are sent to the LLM.\par
+The LLM now has relevant context to generate an accurate response.\par
+\b 8. Final Answer Generation\par
+\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qc\fs36 Haystack\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj\b0\fs24 Haystack is an open-source framework developed by deepset for building Retrieval-Augmented Generation (RAG), semantic search, question-answering systems, and AI pipelines.\par
+It helps developers connect:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj Documents\par
+{\pntext\f3\'B7\tab}Embedding models\par
+{\pntext\f3\'B7\tab}Vector databases\par
+{\pntext\f3\'B7\tab}Retrievers\par
+{\pntext\f3\'B7\tab}Large Language Models (LLMs)\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj to create intelligent search and chatbot applications.\par
+\par
+\b\fs28 Haystack Workflow\par
+\b0\fs24 1. Document Ingestion\par
+Documents are collected from various sources:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj PDFs\par
+{\pntext\f3\'B7\tab}Word files\par
+{\pntext\f3\'B7\tab}Websites\par
+{\pntext\f3\'B7\tab}Databases\par
+{\pntext\f3\'B7\tab}Knowledge bases\par
+
+\pard\widctlpar\sa160\sl276\slmult1\qj\b 2. Preprocessing\par
+\b0 Before storage, Haystack cleans and splits documents into smaller chunks.\par
+\b Tasks Performed\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj\b0 Remove unnecessary characters\par
+{\pntext\f3\'B7\tab}Split large documents\par
+{\pntext\f3\'B7\tab}Add metadata\par
+
+\pard\widctlpar\sa160\sl276\slmult1\qj\b 3. Document Store\par
+\b0 The processed chunks are stored in a \b Document Store\b0 .\par
+Popular stores:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sa160\sl276\slmult1\qj Elasticsearch\par
+{\pntext\f3\'B7\tab}OpenSearch\par
+{\pntext\f3\'B7\tab}Pinecone\par
+{\pntext\f3\'B7\tab}Weaviate\par
+{\pntext\f3\'B7\tab}ChromaDB\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\kerning0\b\f1 4. Embedding Generation\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0\b0\fs21 Each document chunk is converted into a vector (embedding).\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\fs24 5. Query Processing\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0 A user enters a question.\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sl300\slmult0\fs21 Haystack converts the question into an embedding.\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0 Now both the documents and the query are represented in the same vector space.\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\fs24 6. Retrieval\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0 The Retriever compares the query embedding with stored document embeddings.\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\b 7. Prompt Building\par
+\b0 Haystack combines:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0 User Question\par
+{\pntext\f3\'B7\tab}Retrieved Chunks\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0 into a structured prompt.\par
+\b 8. LLM Generation\par
+\b0 The LLM reads the context and generates a response.\par
+The model understands the context and formulates an answer.\par
+Supported LLMs:\par
+
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent360{\pntxtb\'B7}}\widctlpar\fi-360\li720\sb100\sa100\sl300\slmult0 GPT\par
+{\pntext\f3\'B7\tab}Gemini\par
+{\pntext\f3\'B7\tab}Claude\par
+{\pntext\f3\'B7\tab}Llama\par
+{\pntext\f3\'B7\tab}Mistral\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\par
+9. Final Answer\par
+The answer is grounded in retrieved documents rather than only model memory.\par
+\par
+\fs21\par
+
+\pard\widctlpar\li360\sb100\sa100\sl300\slmult0\fs24\par
+
+\pard\widctlpar\sb100\sa100\sl300\slmult0\fs21\par
+
+\pard\widctlpar\sa160\sl276\slmult1\qj\kerning2\f0\fs24\par
+\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\qj\b\fs28\par
+\b0\fs24\par
+\b\par
+\par
+\b0\par
+\par
+\par
+\par
+
+\pard\widctlpar\li360\sa160\sl276\slmult1\par
+
+\pard\widctlpar\sa160\sl276\slmult1\par
+\par
+
+\pard\sa200\sl276\slmult1\kerning0\f2\fs22\lang9\par
+}
+ 
